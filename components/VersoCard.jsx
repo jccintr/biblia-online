@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     verseText:{
       fontSize: 16,
       textAlign: 'justify',
+      marginBottom:5,
     }
     
     

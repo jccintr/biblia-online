@@ -1,14 +1,13 @@
 import React, {useState,useEffect} from 'react'
 import { StyleSheet,Text,View,ScrollView,TouchableOpacity } from 'react-native';
 
-const Capitulos = ({livro}) => {
+const Capitulos = ({livro,capituloSelecionado,setCapituloSelecionado}) => {
     const [capitulos,setCapitulos] = useState([]);
 
 
     useEffect(()=>{
         const criaCapitulos =  () => {
         let arrCapitulos = [];
-        console.log(livro.chapters);
         for(let i=0;i<livro.chapters;i++){
             arrCapitulos.push(i+1);
         }
@@ -17,11 +16,14 @@ const Capitulos = ({livro}) => {
         criaCapitulos();
     }, []);
 
+    const onPressCapitulo = (capitulo) => {
+       setCapituloSelecionado(capitulo);
+    }
 
   return (
    <View style={styles.container}>
     <ScrollView style={{width:'100%'}}horizontal={true} showsHorizontalScrollIndicator={false} >
-       {capitulos.map((index) => (<TouchableOpacity style={styles.chapterArea}><Text>{index}</Text></TouchableOpacity>))}
+       {capitulos.map((index) => (<TouchableOpacity key={index} onPress={()=>onPressCapitulo(index)} style={capituloSelecionado === index ? styles.chapterAreaSelected : styles.chapterArea}><Text style={capituloSelecionado===index?styles.chapterTextSelected:styles.chapterText}>{index}</Text></TouchableOpacity>))}
      </ScrollView>
    </View>
   )
@@ -45,12 +47,29 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         backgroundColor: "#c1c1c1",
-        marginHorizontal:5,
+        marginHorizontal:2,
         alignItems: 'center',
         justifyContent: 'center',
-        
         borderRadius: 20,
-    }
+    },
+    chapterAreaSelected:{
+        width: 40,
+        height: 40,
+        backgroundColor: "#000",
+        marginHorizontal:2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+    },
+    chapterText:{
+       fontSize:14
+    },
+    chapterTextSelected:{
+       fontWeight:'bold',
+       fontSize:14,
+       color:'#fff',
+    },
+
    
     
    

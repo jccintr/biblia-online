@@ -8,25 +8,37 @@ import VersoCard from '../components/VersoCard';
 const Livro = ({route}) => {
     const {livro} = route.params;
     const [versos,setVersos] = useState([]);
+    const [capituloSelecionado,setCapituloSelecionado] = useState(1);
 
 
     useEffect(()=>{
         const getCapitulo = async () => {
-        let json = await Api.getCapitulo(livro.abbrev.pt,1);
+        let json = await Api.getCapitulo(livro.abbrev.pt,capituloSelecionado);
         setVersos(json.verses);
         
         }
         getCapitulo();
     }, []);
 
+    
+    useEffect(()=>{
+        const getCapitulo = async () => {
+        let json = await Api.getCapitulo(livro.abbrev.pt,capituloSelecionado);
+        setVersos(json.verses);
+        
+        }
+        getCapitulo();
+    }, [capituloSelecionado]);
+
+
 
 
   return (
 
     <View style={styles.container}>
-       <Capitulos livro={livro} />
+       <Capitulos livro={livro} capituloSelecionado={capituloSelecionado} setCapituloSelecionado={setCapituloSelecionado}/>
        <ScrollView showsVerticalScrollIndicator={false}>
-         {versos.map(verso=><VersoCard verso={verso}/>)}
+         {versos.map(verso=><VersoCard key={verso.number} verso={verso}/>)}
        </ScrollView>
     </View>
   )
@@ -46,6 +58,7 @@ const styles = StyleSheet.create({
        
        
     },
+   
    
    
     
