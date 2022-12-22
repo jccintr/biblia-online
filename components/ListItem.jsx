@@ -38,18 +38,16 @@ const styles = StyleSheet.create({
     },
    text:{
       fontSize: 18,
-     
    },
    capitulosArea:{
-    
     backgroundColor: "#d1d1d1",
     borderRadius: 10,
     padding: 7,
+    width: 70,
+    alignItems: 'center',
    },
    capituloText:{
     fontSize: 10,
    }
     
-    
-   
   });

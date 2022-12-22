@@ -1,19 +1,19 @@
 import React, {useState,useEffect} from 'react';
-import { StyleSheet, Text, SafeAreaView,View,ScrollView, StatusBar, ActivityIndicator,TouchableOpacity} from 'react-native';
+import { StyleSheet,SafeAreaView,ScrollView,StatusBar,TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 import { cores } from '../globalStyle';
 import SearchField from '../components/SearchField';
-import Api from '../Api';
 import ListItem from '../components/ListItem';
 
 
 
-const Home = () => {
+const Home = ({route}) => {
     const navigation = useNavigation();
     const [searchText,setSearchText] = useState('');
-    const [isLoading,setIsLoading] = useState(true);
-    const [livros,setLivros] = useState([]);
-
+    const {livros} = route.params;
+  //  const [isLoading,setIsLoading] = useState(true);
+   // const [livros,setLivros] = useState([]);
+/*
     useEffect(()=>{
         const getBooks = async () => {
         let json = await Api.getBooks();
@@ -22,11 +22,10 @@ const Home = () => {
         }
         getBooks();
     }, []);
-
-    const onLivroPress = (livro) => {
-        navigation.navigate('Livro',{livro: livro,name: livro.name});
-      
-    }
+*/
+const onLivroPress = (livro) => {
+    navigation.navigate('Livro',{livro: livro,name: livro.name});
+}
 
 
     return (
@@ -39,12 +38,10 @@ const Home = () => {
                 onChangeText={t=>setSearchText(t)}
             />
               <ScrollView style={{width:'100%'}} showsVerticalScrollIndicator={false}>
-            {livros.filter((livro)=>livro.name.toUpperCase().includes(searchText.toUpperCase()))
-             .map(livro => <TouchableOpacity key={livro.abbrev.pt} style={{width:'100%'}} onPress={()=>onLivroPress(livro)}><ListItem  livro={livro}/></TouchableOpacity>)}
+                    {livros.filter((livro)=>livro.name.toUpperCase().includes(searchText.toUpperCase()))
+                    .map(livro => <TouchableOpacity key={livro.abbrev.pt} style={{width:'100%'}} onPress={()=>onLivroPress(livro)}><ListItem  livro={livro}/></TouchableOpacity>)}
              </ScrollView>
-              {isLoading&&<ActivityIndicator style={styles.loading} size="large" color="#00f"/>}
-             
-        </SafeAreaView>
+         </SafeAreaView>
        
        )
 }
@@ -70,19 +67,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius:10,
         marginBottom: 20,
-      
-      },
+     },
      menuText: {
        fontWeight: 'bold',
        fontSize: 20,
        color: '#fff',
-      
-       
     },
     loading:{
-    
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-      }
+        position: 'absolute',
+        top: '50%',
+     }
     
   });

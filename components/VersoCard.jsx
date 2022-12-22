@@ -1,12 +1,15 @@
-import React from 'react'
-import { StyleSheet,Text,View } from 'react-native';
+import React, {useState} from 'react'
+import { StyleSheet,Text,View,TouchableOpacity } from 'react-native';
 
 const VersoCard = ({verso}) => {
+  const [selected,setSelected] = useState(false);
+
+
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.verseTitle}>{`Versículo ${verso.number}`}</Text>
-      <Text style={styles.verseText}>{verso.text}</Text>
-    </View>
+    <TouchableOpacity style={selected?styles.containerSelected:styles.container} onPress={()=>setSelected(!selected)}>
+       <Text style={selected?styles.verseTextSelected:styles.verseText}>{verso.number + '  '+verso.text}</Text>
+    </TouchableOpacity>
   )
 }
 
@@ -18,25 +21,33 @@ const styles = StyleSheet.create({
     container:{
        flex:0,
        flexDirection: 'column',
-       alignItems: 'center',
+       alignItems: 'flex-start',
        justifyContent: 'space-between',
        borderBottomColor: '#c1c1c1',
        borderBottomWidth: 1,
-       paddingHorizontal:5, 
-      
+       padding: 5, 
     },
-    verseTitle:{
-      fontSize: 16,
-      fontWeight: 'bold',
-      marginBottom:5,
-    },
-    verseText:{
-      fontSize: 16,
+    containerSelected:{
+      flex:0,
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      borderBottomColor: '#c1c1c1',
+      borderBottomWidth: 1,
+      padding: 5,
+      backgroundColor: '#000',
+   },
+     verseText:{
+      fontSize: 14,
       textAlign: 'justify',
       marginBottom:5,
-    }
-    
-    
-    
-   
+      color:'#000',
+    },
+    verseTextSelected:{
+      fontSize: 14,
+      textAlign: 'justify',
+      marginBottom:5,
+      color:'#fff',
+    },
+  
   });
