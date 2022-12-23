@@ -1,9 +1,10 @@
 import React, {useState,useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'; 
-import { StyleSheet,SafeAreaView,View,ScrollView,TouchableOpacity,ActivityIndicator} from 'react-native';
+import { StyleSheet,SafeAreaView,View,ScrollView,TouchableOpacity,StatusBar,ActivityIndicator} from 'react-native';
 import Capitulos from '../components/Capitulos';
 import Api from '../Api';
 import VersoCard from '../components/VersoCard';
+//import { StatusBar } from 'expo-status-bar';
 
 const Livro = ({route}) => {
     const {livro} = route.params;
@@ -38,6 +39,11 @@ const Livro = ({route}) => {
   return (
 
     <View style={styles.container}>
+       <StatusBar
+            animated={true}
+            backgroundColor="#fff"
+            barStyle="dark-content"
+             />
        {livro.chapters>1?<Capitulos livro={livro} capituloSelecionado={capituloSelecionado} setCapituloSelecionado={setCapituloSelecionado}/>:''}
        <ScrollView showsVerticalScrollIndicator={false}>
          {versos.map(verso=><VersoCard key={verso.number} verso={verso}/>)}

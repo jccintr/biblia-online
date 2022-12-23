@@ -10,7 +10,8 @@ const ListItem = ({livro}) => {
         <View style={styles.livroArea}>
           <Text style={styles.text}>{livro.name}</Text>
           <View style={styles.capitulosArea}>
-             <Text style={styles.capituloText}>{livro.chapters} capítulo{livro.chapters>1?'s':''}</Text>
+            {/*<Text style={styles.capituloText}>{livro.chapters} capítulo{livro.chapters>1?'s':''}</Text>*/} 
+            <Text style={styles.capituloText}>{livro.chapters}</Text>
           </View>
         </View>
         <Entypo name="chevron-small-right" size={30} color="black" />  
@@ -43,11 +44,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#d1d1d1",
     borderRadius: 10,
     padding: 7,
-    width: 70,
+    width: 40,
+   
     alignItems: 'center',
    },
    capituloText:{
-    fontSize: 10,
+    fontSize: 12,
    }
     
   });

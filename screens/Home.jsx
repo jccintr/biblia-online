@@ -4,8 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import { cores } from '../globalStyle';
 import SearchField from '../components/SearchField';
 import ListItem from '../components/ListItem';
+//import { StatusBar } from 'expo-status-bar';
 
-
+/*
+adaptive icone 510   3x170
+icone normal 850  5x170
+*/
 
 const Home = ({route}) => {
     const navigation = useNavigation();
@@ -31,7 +35,11 @@ const onLivroPress = (livro) => {
     return (
         
         <SafeAreaView style={styles.container}>
-            <StatusBar/>
+         <StatusBar
+            animated={true}
+            backgroundColor="#fff"
+            barStyle="dark-content"
+             />
             <SearchField
                 placeholder="Pesquisar livros"
                 value={searchText}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, SafeAreaView,Image,ActivityIndicator,Text} from 'react-native';
+import { StyleSheet, SafeAreaView,Image,ActivityIndicator,StatusBar,Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import logo from '../assets/biblia-icone.png';
-import { StatusBar } from 'expo-status-bar';
+//import { StatusBar } from 'expo-status-bar';
 import { cores } from '../globalStyle';
 import Api from '../Api';
 
@@ -23,7 +23,11 @@ const Preload = () => {
 
    return (
       <SafeAreaView style={styles.container}>
-        <StatusBar/>
+         <StatusBar
+            animated={true}
+            backgroundColor="#000"
+            barStyle="light-content"
+             />
           <Image source={logo} style={styles.imagelogo}/>
           <Text style={styles.appName}>Bíblia Sagrada Digital</Text>
           <ActivityIndicator style={styles.loading} size="large" color="#fff"/>
