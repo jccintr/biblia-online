@@ -11,18 +11,10 @@ const Livro = ({route}) => {
     const [versos,setVersos] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
     const [capituloSelecionado,setCapituloSelecionado] = useState(1);
-
-
-    useEffect(()=>{
-        const getCapitulo = async () => {
-        let json = await Api.getCapitulo(livro.abbrev.pt,capituloSelecionado);
-        setVersos(json.verses);
-        setIsLoading(false);
-        }
-        getCapitulo();
-    }, []);
-
     
+   
+
+
     useEffect(()=>{
         const getCapitulo = async () => {
           setIsLoading(true);  
@@ -33,7 +25,18 @@ const Livro = ({route}) => {
         getCapitulo();
     }, [capituloSelecionado]);
 
+/*
+    const onSelectCapitulo = async  (capitulo) => {
 
+      setIsLoading(true);  
+      let json = await Api.getCapitulo(livro.abbrev.pt,capitulo);
+      setCapituloSelecionado(capitulo);
+      setVersos(json.verses);
+      setIsLoading(false);
+
+    }
+
+*/
 
 
   return (
@@ -46,7 +49,7 @@ const Livro = ({route}) => {
              />
        {livro.chapters>1?<Capitulos livro={livro} capituloSelecionado={capituloSelecionado} setCapituloSelecionado={setCapituloSelecionado}/>:''}
        <ScrollView showsVerticalScrollIndicator={false}>
-         {versos.map(verso=><VersoCard key={verso.number} verso={verso}/>)}
+         {versos.map(verso=><VersoCard key={verso.number} verso={verso} /> )}
        </ScrollView>
        {isLoading&&<ActivityIndicator style={styles.loading} size="large" color="#000"/>}
     </View>
