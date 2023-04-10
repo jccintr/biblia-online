@@ -1,10 +1,10 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import { StyleSheet,SafeAreaView,ScrollView,StatusBar,TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 import { cores } from '../globalStyle';
 import SearchField from '../components/SearchField';
 import ListItem from '../components/ListItem';
-//import { StatusBar } from 'expo-status-bar';
+
 
 /*
 adaptive icone 510   3x170
@@ -15,18 +15,8 @@ const Home = ({route}) => {
     const navigation = useNavigation();
     const [searchText,setSearchText] = useState('');
     const {livros} = route.params;
-  //  const [isLoading,setIsLoading] = useState(true);
-   // const [livros,setLivros] = useState([]);
-/*
-    useEffect(()=>{
-        const getBooks = async () => {
-        let json = await Api.getBooks();
-        setLivros(json);
-        setIsLoading(false);
-        }
-        getBooks();
-    }, []);
-*/
+  
+
 const onLivroPress = (livro) => {
     navigation.navigate('Livro',{livro: livro,name: livro.name});
 }
@@ -67,23 +57,5 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
         paddingTop: 4,
     },
-    menu:{
-        width: '90%',
-        height: 50,
-        backgroundColor: cores.botaoBackground,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius:10,
-        marginBottom: 20,
-     },
-     menuText: {
-       fontWeight: 'bold',
-       fontSize: 20,
-       color: '#fff',
-    },
-    loading:{
-        position: 'absolute',
-        top: '50%',
-     }
     
   });

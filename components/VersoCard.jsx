@@ -1,13 +1,36 @@
-import React, {useState,useEffect} from 'react'
-import { StyleSheet,Text,View,TouchableOpacity } from 'react-native';
+import React, {useState} from 'react'
+import { StyleSheet,Text,TouchableOpacity } from 'react-native';
 
-const VersoCard = ({verso}) => {
-  const [selected,setSelected] = useState(false);
 
+
+
+
+const VersoCard = ({verso,selectedVersos,setSelectedVersos}) => {
+  
+
+  const onVersoPress = (verseNumber) => {
+    let newArr = []
+    newArr.push(...selectedVersos);
+
+    if (newArr.includes(verseNumber)) { // se estiver no array, remove
+       
+       const index = newArr.indexOf(verseNumber);
+       if (index > -1){
+        newArr.splice(index,1);
+       }
+
+    } else {  // não está no array, adiciona
+
+      newArr.push(verseNumber);
+
+    }
+    
+     setSelectedVersos(newArr);
+  }
 
   return (
-    <TouchableOpacity style={selected?styles.containerSelected:styles.container} onPress={()=>setSelected(!selected)}>
-       <Text style={selected?styles.verseTextSelected:styles.verseText}>{verso.number + '  '+verso.text}</Text>
+    <TouchableOpacity style={selectedVersos.includes(verso.number)?styles.containerSelected:styles.container} onPress={()=>onVersoPress(verso.number)}>
+       <Text style={selectedVersos.includes(verso.number)?styles.verseTextSelected:styles.verseText}>{verso.number + '  '+verso.text}</Text>
     </TouchableOpacity>
   )
 }

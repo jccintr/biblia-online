@@ -17,7 +17,9 @@ const Capitulos = ({livro,capituloSelecionado,setCapituloSelecionado}) => {
     }, []);
 
     const onPressCapitulo = (capitulo) => {
+     
        setCapituloSelecionado(capitulo);
+      
     }
 
   return (
