@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { StyleSheet,Text,TouchableOpacity } from 'react-native';
 
 
@@ -24,7 +24,7 @@ const VersoCard = ({verso,selectedVersos,setSelectedVersos}) => {
       newArr.push(verseNumber);
 
     }
-    
+
      setSelectedVersos(newArr);
   }
 

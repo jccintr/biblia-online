@@ -33,6 +33,7 @@ const onLivroPress = (livro) => {
             <SearchField
                 placeholder="Pesquisar livros"
                 value={searchText}
+                setValue={setSearchText}
                 onChangeText={t=>setSearchText(t)}
             />
               <ScrollView style={{width:'100%'}} showsVerticalScrollIndicator={false}>

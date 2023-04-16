@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
-import { useNavigation } from '@react-navigation/native'; 
-import { StyleSheet,SafeAreaView,View,ScrollView,TouchableOpacity,StatusBar,ActivityIndicator} from 'react-native';
+//import { useNavigation } from '@react-navigation/native'; 
+import { StyleSheet,View,ScrollView,StatusBar,ActivityIndicator} from 'react-native';
 import Capitulos from '../components/Capitulos';
 import Api from '../Api';
 import VersoCard from '../components/VersoCard';

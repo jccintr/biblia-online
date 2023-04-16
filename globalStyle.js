@@ -8,4 +8,5 @@ export const cores = {
     laranja:'#FF6600',
     cinzaClaro: '#fafafa',
     branco: '#fff',
+    iconeSearchField: '#5b5b5b',
  };

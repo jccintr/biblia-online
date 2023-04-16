@@ -29,7 +29,7 @@ const Preload = () => {
             barStyle="light-content"
              />
           <Image source={logo} style={styles.imagelogo}/>
-          <Text style={styles.appName}>Bíblia Sagrada Digital</Text>
+          <Text style={styles.appName}>Bíblia Digital</Text>
           <ActivityIndicator style={styles.loading} size="large" color="#fff"/>
       </SafeAreaView>
      )
