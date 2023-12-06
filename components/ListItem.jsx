@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { StyleSheet,Text,View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
@@ -8,11 +7,10 @@ const ListItem = ({livro}) => {
   return (
     <View style={styles.container}>
         <View style={styles.livroArea}>
-          <Text style={styles.text}>{livro.name}</Text>
-          <View style={styles.capitulosArea}>
-            {/*<Text style={styles.capituloText}>{livro.chapters} capítulo{livro.chapters>1?'s':''}</Text>*/} 
-            <Text style={styles.capituloText}>{livro.chapters}</Text>
-          </View>
+            <Text style={styles.text}>{livro.name}</Text>
+            <View style={styles.capitulosArea}>
+                <Text style={styles.capituloText}>{livro.chapters}</Text>
+            </View>
         </View>
         <Entypo name="chevron-small-right" size={30} color="black" />  
     </View>
@@ -28,8 +26,6 @@ const styles = StyleSheet.create({
        flexDirection: 'row',
        alignItems: 'center',
        justifyContent: 'space-between',
-       borderBottomColor: '#c1c1c1',
-       borderBottomWidth: 1,
        
     },
     livroArea:{
